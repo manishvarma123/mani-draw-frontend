@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RxCross2 } from "react-icons/rx";
 import { emailRegex, ERROR_MESSAGE, phoneRegex } from '@/lib/constants'
 import { toast } from 'react-toastify'
-import { setCurrentUser } from '@/redux/slices/authSlice'
+import { setCurrentUser, setWalletBalance } from '@/redux/slices/authSlice'
 import SummaryApi from '@/common'
 import { getCurrentUser } from '@/services/auth'
 
@@ -127,6 +127,8 @@ const RegisterPage = () => {
                 localStorage.setItem("token", token);
 
                 dispatch(setCurrentUser(json.data));
+                dispatch(setWalletBalance(json?.data?.walletBalance))
+                dispatch(setShowPage("lucky-draw"));
 
                 toast.success(json?.message)
 

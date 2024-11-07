@@ -74,6 +74,7 @@ const LoginPage = () => {
                 localStorage.setItem('token',token);
                 dispatch(setCurrentUser(json?.data));
                 dispatch(setWalletBalance(json?.data?.walletBalance))
+                dispatch(setShowPage("lucky-draw"));
                 toast.success(json?.message)
                 router.push('/')
             }
